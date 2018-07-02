@@ -332,6 +332,7 @@ app.controller('OcSmsController', ['$scope', '$interval', '$timeout', '$compile'
 			// Improve JS performance
 			var msgClass = '';
 			var msgCount = 0;
+			var twemojiOptions = { base: OC.generateUrl('/apps/ocsms/js/twemoji/')};
 
 			$.each(jsondata["conversation"], function (id, vals) {
 				if (vals["type"] == 1) {
@@ -354,7 +355,7 @@ app.controller('OcSmsController', ['$scope', '$interval', '$timeout', '$compile'
 						'id': id,
 						'type': msgClass,
 						'date': new Date(id * 1),
-						'content': $sce.trustAsHtml(twemoji.parse(escapeHTML(vals['msg']), { base: OC.generateUrl('/apps/ocsms/js/twemoji/')}))
+						'content': $sce.trustAsHtml(twemoji.parse(escapeHTML(vals['msg']), twemojiOptions))
 					});
 					buf = true;
 					msgCount++;
