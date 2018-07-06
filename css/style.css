@@ -250,6 +250,10 @@ label {
 	margin: 88px auto;
 }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+
 img.emoji {
 	height: 1em;
 	width: 1em;
