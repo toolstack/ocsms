@@ -31,8 +31,8 @@ app.filter('firstCharacter', function () {
 });
 
 
-app.controller('OcSmsController', ['$scope', '$interval', '$timeout', '$compile',
-	function ($scope, $interval, $timeout, $compile) {
+app.controller('OcSmsController', ['$scope', '$interval', '$timeout', '$compile', '$sce',
+	function ($scope, $interval, $timeout, $compile, $sce) {
 		$scope.lastConvMessageDate = 0;
 		$scope.isConvLoading = false;
 		$scope.isContactsLoading = true;
@@ -332,6 +332,7 @@ app.controller('OcSmsController', ['$scope', '$interval', '$timeout', '$compile'
 			// Improve JS performance
 			var msgClass = '';
 			var msgCount = 0;
+			var twemojiOptions = { base: OC.generateUrl('/apps/ocsms/js/twemoji/')};
 
 			$.each(jsondata["conversation"], function (id, vals) {
 				if (vals["type"] == 1) {
@@ -354,7 +355,7 @@ app.controller('OcSmsController', ['$scope', '$interval', '$timeout', '$compile'
 						'id': id,
 						'type': msgClass,
 						'date': new Date(id * 1),
-						'content': vals['msg']
+						'content': $sce.trustAsHtml(twemoji.parse(escapeHTML(vals['msg']), twemojiOptions))
 					});
 					buf = true;
 					msgCount++;
