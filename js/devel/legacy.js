@@ -355,7 +355,7 @@ app.controller('OcSmsController', ['$scope', '$interval', '$timeout', '$compile'
 						'id': id,
 						'type': msgClass,
 						'date': new Date(id * 1),
-						'content': $sce.trustAsHtml(twemoji.parse(escapeHTML(vals['msg']), twemojiOptions))
+						'content': $sce.trustAsHtml(twemoji.parse(anchorme(escapeHTML(vals['msg'])), twemojiOptions))
 					});
 					buf = true;
 					msgCount++;
