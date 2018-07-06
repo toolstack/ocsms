@@ -85,7 +85,7 @@ use \OCA\OcSms\Lib\CountryCodes;
 			<div ng-show="messages.length > 0" class="ng-cloak ocsms-messages-container">
 				<div ng-repeat="message in messages | orderBy:'date'">
 					<div class="msg-{{ message.type }}">
-						<div>{{ message.content }}</div>
+						<div ng-bind-html="message.content"></div>
 						<div style="display: block;" id="ocsms-message-removal" class="icon-delete svn delete action" ng-click="removeConversationMessage(message.id);"></div>
 						<div class="msg-date">{{ message.date | date:'medium' }}</div>
 					</div>
