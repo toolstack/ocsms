@@ -226,7 +226,7 @@
 	width: 20%;
 }
 
-#app-settings-header {
+#app-settings-header, #app-settings-content {
 	width: auto;
 }
 
@@ -252,4 +252,11 @@ label {
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
 	display: none !important;
+}
+
+img.emoji {
+	height: 1em;
+	width: 1em;
+	margin: 0 .05em 0 .1em;
+	vertical-align: -0.1em;
 }
